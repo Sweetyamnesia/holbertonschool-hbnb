@@ -29,3 +29,9 @@ nav a {
 main {
     padding: 2rem;
 }
+
+.place-card {
+	display: flex;
+	text-align: center;
+	align-items: center;
+}
