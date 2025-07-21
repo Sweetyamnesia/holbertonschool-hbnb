@@ -35,3 +35,7 @@ main {
 	text-align: center;
 	align-items: center;
 }
+
+.details-button {
+	background-color: orange;
+}
