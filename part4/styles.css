@@ -31,7 +31,7 @@ main {
     padding: 2rem;
 }
 
-.place-card, .review-card {
+.place-card {
   border: 1px solid #ddd;
   border-radius: 10px;
   padding: 10px;
@@ -41,6 +41,15 @@ main {
   height: 200px;
   text-align: center;
   align-content: center;
+}
+
+.review-card {
+  background-color: #fff;
+  width: 100%;
+  max-width: 500px;
+  margin: 1rem auto;
+  padding: 1rem;
+  text-align: left;
 }
 
 #places-list {
@@ -53,11 +62,12 @@ main {
   background-color: orange;
   border: none;
   padding: 0.5rem 1rem;
-  margin-top: 0.5rem;
+  margin-top: 1rem;
   cursor: pointer;
   border-radius: 5px;
   color: white;
   font-weight: bold;
+  display: inline-block;
 }
 
 footer {
@@ -75,4 +85,15 @@ h2 {
 .p {
 	color: white;
 	text-align: center;
+}
+
+#reviews h2 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+#add-review {
+    text-align: center;
+    margin-top: 2rem;
 }
