@@ -17,9 +17,15 @@
     <main>
         <section id="filter">
 			<h2> Available Places</h2>
-            <label for="price-filter">Max Price:</label>
+            <label for="price-filter" class="price-filter">Max Price:</label>
             <select id="price-filter">
-                <!-- Options will be populated dynamically -->
+                <option value="" disabled selected>Choose a max price</option>
+				<option value="50">Up to $50</option>
+				<option value="100">Up to $100</option>
+				<option value="150">Up to $150</option>
+				<option value="200">Up to $200</option>
+				<option value="300">Up to $300</option>
+				<option value="500">Up to $500</option>
             </select>
         </section>
 
@@ -44,8 +50,8 @@
         </section>
     </main>
 	<hr>
-	<footer>
-		<p>© HBnB Evolution. All Rights Reserved.</p>
+	<footer class="footer">
+		<p class="p">© HBnB Evolution. All Rights Reserved.</p>
 	</footer>
     <script src="scripts.js"></script>
 </body>
