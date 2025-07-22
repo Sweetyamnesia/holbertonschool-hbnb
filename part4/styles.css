@@ -11,13 +11,14 @@ body {
 }
 
 header {
-    background-color: #333;
+    background-color: orange;
     color: #fff;
     padding: 1rem;
 }
 
 .login-button {
 	float: right;
+	margin-top: 20px;
 }
 
 nav a {
@@ -36,8 +37,10 @@ main {
   padding: 10px;
   margin: 20px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  width: 250px;
+  width: 300px;
+  height: 200px;
   text-align: center;
+  align-content: center;
 }
 
 #places-list {
@@ -55,4 +58,21 @@ main {
   border-radius: 5px;
   color: white;
   font-weight: bold;
+}
+
+footer {
+	background-color: orange;
+}
+
+h2 {
+	text-align: center;
+}
+
+#filter {
+	text-align: center;
+}
+
+.p {
+	color: white;
+	text-align: center;
 }
