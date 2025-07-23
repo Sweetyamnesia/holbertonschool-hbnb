@@ -6,11 +6,14 @@ document.addEventListener('DOMContentLoaded', () => {
             event.preventDefault();
             const email = document.getElementById("email").value;
     		const password = document.getElementById("password").value;
+
+			loginUser(email, password);
+
         });
     }
 
 	async function loginUser(email, password) {
-      const response = await fetch('https://your-api-url/login', {
+      const response = await fetch('http://localhost:5000/api/v1/auth/login', {
           method: 'POST',
           headers: {
               'Content-Type': 'application/json'
