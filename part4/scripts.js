@@ -7,7 +7,11 @@ document.addEventListener('DOMContentLoaded', () => {
             const email = document.getElementById("email").value;
     		const password = document.getElementById("password").value;
 
-			loginUser(email, password);
+			try {
+                await loginUser(email, password);
+            } catch (error) {
+                alert('Une erreur est survenue : ' + error.message);
+            }
 
         });
     }
@@ -23,9 +27,10 @@ document.addEventListener('DOMContentLoaded', () => {
       
 	  if (response.ok) {
       	const data = await response.json();
-      	document.cookie = `token=${data.access_token}; path=/`;
+      	document.cookie = `token=${data.access_token}; path=/; max-age=3600`;
       	window.location.href = 'index.html';
   		} else {
+			const errorText = await response.text();
       		alert('Login failed: ' + response.statusText);
   		}
   	}
