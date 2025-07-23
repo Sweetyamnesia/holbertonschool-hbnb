@@ -38,7 +38,7 @@ main {
   margin: 20px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   width: 300px;
-  height: 200px;
+  min-height: 200px;
   text-align: center;
   align-content: center;
 }
@@ -70,8 +70,10 @@ main {
   display: inline-block;
 }
 
-footer {
+footer p {
 	background-color: orange;
+	color: white;
+	text-align: center;
 }
 
 h2 {
@@ -79,11 +81,6 @@ h2 {
 }
 
 #filter {
-	text-align: center;
-}
-
-.p {
-	color: white;
 	text-align: center;
 }
 
@@ -96,4 +93,45 @@ h2 {
 #add-review {
     text-align: center;
     margin-top: 2rem;
+}
+
+form {
+  max-width: 500px;
+  margin: 2rem auto;
+  padding: 1rem;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+label {
+  display: block;
+  margin-top: 1rem;
+  font-weight: bold;
+}
+
+input, textarea, select {
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.logo {
+  height: 40px;
+  vertical-align: middle;
+}
+
+.place-details {
+  max-width: 700px;
+  margin: 2rem auto;
+  padding: 1rem;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.place-info p {
+  margin-bottom: 0.5rem;
 }
