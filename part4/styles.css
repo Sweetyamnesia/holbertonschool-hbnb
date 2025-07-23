@@ -19,6 +19,14 @@ header {
 .login-button {
 	float: right;
 	margin-top: 20px;
+	background-color: orange;
+  	border: none;
+  	padding: 0.5rem 1rem;
+  	margin-top: 1rem;
+  	cursor: pointer;
+  	border-radius: 5px;
+  	color: white;
+  	font-weight: bold;
 }
 
 nav a {
@@ -134,4 +142,16 @@ input, textarea, select {
 
 .place-info p {
   margin-bottom: 0.5rem;
+}
+
+.submit {
+  background-color: orange;
+  border: none;
+  padding: 0.5rem 1rem;
+  margin-top: 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  display: inline-block;
 }
