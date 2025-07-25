@@ -27,11 +27,15 @@ document.addEventListener('DOMContentLoaded', () => {
       
 	  if (response.ok) {
       	const data = await response.json();
-      	document.cookie = `token=${data.access_token}; path=/; max-age=3600`;
+      	document.cookie = `token=${data.access_token}; path=/; max-age=3600; Secure; SameSite=Strict`;
       	window.location.href = 'index.html';
   		} else {
-			const errorText = await response.text();
-      		alert('Login failed: ' + response.statusText);
+			try {
+            	const errorData = await response.json();
+            	alert('Échec de la connexion : ' + (errorData.message || response.statusText));
+        	} catch (e) {
+            	alert('Échec de la connexion : ' + response.statusText);
+        	}
   		}
   	}
 });
