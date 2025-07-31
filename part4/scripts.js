@@ -97,4 +97,88 @@ document.addEventListener('DOMContentLoaded', () => {
             places.style.display = 'none';
 		}
   	});
+
+	function getPlaceIdFromURL() {
+      // Extract the place ID from window.location.search
+      // Your code here
+  	}
+
+	function checkAuthentication() {
+      const token = getCookie('token');
+      const addReviewSection = document.getElementById('add-review');
+
+      if (!token) {
+          addReviewSection.style.display = 'none';
+      } else {
+          addReviewSection.style.display = 'block';
+          // Store the token for later use
+          fetchPlaceDetails(token, placeId);
+      }
+  	}
+
+  	function getCookie(name) {
+      // Function to get a cookie value by its name
+      // Your code here
+  	}
+
+	async function fetchPlaceDetails(token, placeId) {
+      // Make a GET request to fetch place details
+      // Include the token in the Authorization header
+      // Handle the response and pass the data to displayPlaceDetails function
+  	}
+
+	function displayPlaceDetails(place) {
+      // Clear the current content of the place details section
+      // Create elements to display the place details (name, description, price, amenities and reviews)
+      // Append the created elements to the place details section
+  	}
+
+	function checkAuthentication() {
+      const token = getCookie('token');
+      if (!token) {
+          window.location.href = 'index.html';
+      }
+      return token;
+  	}
+
+  	function getCookie(name) {
+      // Function to get a cookie value by its name
+      // Your code here
+  	}
+
+	function getPlaceIdFromURL() {
+      // Extract the place ID from window.location.search
+      // Your code here
+  	}
+
+	document.addEventListener('DOMContentLoaded', () => {
+    const reviewForm = document.getElementById('review-form');
+    const token = checkAuthentication();
+    const placeId = getPlaceIdFromURL();
+
+    if (reviewForm) {
+        reviewForm.addEventListener('submit', async (event) => {
+            event.preventDefault();
+            // Get review text from form
+            // Make AJAX request to submit review
+            // Handle the response
+        });
+    }
+  	});
+
+	async function submitReview(token, placeId, reviewText) {
+      // Make a POST request to submit review data
+      // Include the token in the Authorization header
+      // Send placeId and reviewText in the request body
+      // Handle the response
+  	}
+
+	function handleResponse(response) {
+    if (response.ok) {
+        alert('Review submitted successfully!');
+        // Clear the form
+    } else {
+        alert('Failed to submit review');
+      }
+  	}
 });
