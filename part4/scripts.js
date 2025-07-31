@@ -90,11 +90,11 @@ document.addEventListener('DOMContentLoaded', () => {
   	}
 
 	document.getElementById('price-filter').addEventListener('change', (event) => {
-      const placePrice = parseFloat(place.dataset.price);
+      const placePrice = parseFloat(places.dataset.price);
         if (isNaN(selectedPrice) || placePrice <= selectedPrice) {
-            place.style.display = 'block';
+            places.style.display = 'block';
         } else {
-            place.style.display = 'none';
+            places.style.display = 'none';
 		}
   	});
 });
