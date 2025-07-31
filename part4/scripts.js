@@ -79,13 +79,21 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 		
 		placesList.innerHTML = '';
-      // Iterate over the places data
-      // For each place, create a div element and set its content
-      // Append the created element to the places list
+
+		places.forEach(place => {
+			const placeDiv = document.createElement('div');
+			placeDiv.classList.add('place');
+			placesList.appendChild(placeDiv)
+			placeDiv.dataset.price = place.price;
+		});
   	}
 
 	document.getElementById('price-filter').addEventListener('change', (event) => {
-      // Get the selected price value
-      // Iterate over the places and show/hide them based on the selected price
+      const placePrice = parseFloat(place.dataset.price);
+        if (isNaN(selectedPrice) || placePrice <= selectedPrice) {
+            place.style.display = 'block';
+        } else {
+            place.style.display = 'none';
+		}
   	});
 });
