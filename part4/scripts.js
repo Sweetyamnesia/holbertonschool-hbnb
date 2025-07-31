@@ -39,6 +39,11 @@ document.addEventListener('DOMContentLoaded', () => {
   		}
   	}
 
+	function getCookie(name) {
+      // Function to get a cookie value by its name
+      // Your code here
+  	}
+
 	function checkAuthentication() {
       const token = getCookie('token');
       const loginLink = document.getElementById('login-link');
@@ -47,24 +52,33 @@ document.addEventListener('DOMContentLoaded', () => {
           loginLink.style.display = 'block';
       	} else {
           loginLink.style.display = 'none';
-          // Fetch places data if the user is authenticated
           fetchPlaces(token);
       	}
   	}
-  	
-	function getCookie(name) {
-      // Function to get a cookie value by its name
-      // Your code here
-  	}
 
 	async function fetchPlaces(token) {
-      // Make a GET request to fetch places data
-      // Include the token in the Authorization header
-      // Handle the response and pass the data to displayPlaces function
+		const response = await fetch('http://localhost:5000/api/v1/places', {
+			method: 'GET',
+			headers: {
+				'Authorization': `Bearer ${token}`
+			}
+		});
+
+		if (!response.ok) {
+			throw new Error('Erreur lors du chargement des lieux');
+		}
+
+		const places = await response.json();
+		displayPlaces(places);
   	}
 
 	function displayPlaces(places) {
-      // Clear the current content of the places list
+      const placesList = document.getElementById('places-list');
+    	if (!placesList) {
+			return;
+		}
+		
+		placesList.innerHTML = '';
       // Iterate over the places data
       // For each place, create a div element and set its content
       // Append the created element to the places list
