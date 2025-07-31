@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     } else {
-		checkAuthentication();
+		const token = getCookie('token');
 	}
 
 	async function loginUser(email, password) {
