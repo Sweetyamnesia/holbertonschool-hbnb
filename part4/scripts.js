@@ -193,9 +193,11 @@ document.addEventListener('DOMContentLoaded', () => {
         return placeId;
     }
 
-    const reviewForm = document.getElementById('review-form');
     const placeId = getPlaceIdFromURL();
-    const token = checkAuthentication();
+    const token = getCookie('token');
+    checkAuthentication();
+
+    const reviewForm = document.getElementById('review-form');
 
     if (reviewForm) {
         reviewForm.addEventListener('submit', async (event) => {
