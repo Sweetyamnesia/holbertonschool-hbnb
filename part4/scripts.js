@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	}
 
 	async function loginUser(email, password) {
-      const response = await fetch(`http://localhost:5000/api/v1/auth/login`, {
+      const response = await fetch(`http://127.0.0.1:5000/api/v1/auth/login`, {
           method: 'POST',
           headers: {
               'Content-Type': 'application/json'
@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	
 
 	async function fetchPlaces(token) {
-		const response = await fetch(`http://localhost:5000/api/v1/places`, {
+		const response = await fetch(`http://127.0.0.1:5000/api/v1/places`, {
 			method: 'GET',
 			headers: {
 				'Authorization': `Bearer ${token}`
@@ -126,7 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 	async function fetchPlaceDetails(token, placeId) {
-        const response = await fetch(`http://localhost:5000/api/v1/places/${placeId}`, {
+        const response = await fetch(`http://127.0.0.1:5000/api/v1/places/${placeId}`, {
 			method: 'GET',
 			headers: {
 				'Authorization': `Bearer ${token}`
@@ -211,7 +211,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 	async function submitReview(token, placeId, reviewText) {
-    const response = await fetch(`http://localhost:5000/api/v1/places/${placeId}/reviews`, {
+    const response = await fetch(`http://127.0.0.1:5000/api/v1/places/${placeId}/reviews`, {
         method: 'POST',
         headers: {
             'Authorization': `Bearer ${token}`,
