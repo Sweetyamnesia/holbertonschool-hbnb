@@ -45,12 +45,23 @@ document.addEventListener('DOMContentLoaded', () => {
       const loginLink = document.getElementById('login-link');
 
       if (!token) {
+          window.location.href = 'index.html';
           loginLink.style.display = 'block';
       	} else {
           loginLink.style.display = 'none';
           fetchPlaces(token);
       	}
-  	}
+
+        const addReviewSection = document.getElementById('add-review');
+
+        if (!token) {
+          addReviewSection.style.display = 'none';
+        } else {
+          addReviewSection.style.display = 'block';
+          // Store the token for later use
+          fetchPlaceDetails(token, placeId);
+        }
+  	    }
 
 	function getCookie(name) {
     const cookies = document.cookie.split(";");
@@ -105,19 +116,6 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
   	});
 
-	function checkAuthentication() {
-      const token = getCookie('token');
-      const addReviewSection = document.getElementById('add-review');
-
-      if (!token) {
-          addReviewSection.style.display = 'none';
-      } else {
-          addReviewSection.style.display = 'block';
-          // Store the token for later use
-          fetchPlaceDetails(token, placeId);
-      }
-  	}
-
 	async function fetchPlaceDetails(token, placeId) {
         const response = await fetch(`http://localhost:5000/api/v1/places/${placeId}`, {
 			method: 'GET',
@@ -139,14 +137,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Create elements to display the place details (name, description, price, amenities and reviews)
       // Append the created elements to the place details section
-  	}
-
-	function checkAuthentication() {
-      const token = getCookie('token');
-      if (!token) {
-          window.location.href = 'index.html';
-      }
-      return token;
   	}
 
 	function getPlaceIdFromURL() {
