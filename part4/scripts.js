@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     } else {
-		const token = getCookie('token');
+		checkAuthentication();
 	}
 
 	async function loginUser(email, password) {
@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
           },
           body: JSON.stringify({ email, password })
       });
-      
+
 	  if (response.ok) {
       	const data = await response.json();
       	document.cookie = `token=${data.access_token}; path=/; max-age=3600; Secure; SameSite=Strict`;
@@ -40,11 +40,6 @@ document.addEventListener('DOMContentLoaded', () => {
   		}
   	}
 
-	function getCookie(name) {
-      // Function to get a cookie value by its name
-      // Your code here
-  	}
-
 	function checkAuthentication() {
       const token = getCookie('token');
       const loginLink = document.getElementById('login-link');
@@ -56,6 +51,18 @@ document.addEventListener('DOMContentLoaded', () => {
           fetchPlaces(token);
       	}
   	}
+
+	function getCookieByName(name) {
+    const cookies = document.cookie.split(";");
+        for (let cookie of cookies) {
+            cookie = cookie.trim();
+        if (cookie.startsWith(name + "=")) {
+            return cookie.substring(name.length + 1);
+        }
+        }
+        return null;
+    }
+	
 
 	async function fetchPlaces(token) {
 		const response = await fetch('http://localhost:5000/api/v1/places', {
@@ -78,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
     	if (!placesList) {
 			return;
 		}
-		
+
 		placesList.innerHTML = '';
 
 		places.forEach(place => {
