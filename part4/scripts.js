@@ -146,8 +146,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const reviewForm = document.getElementById('review-form');
-    const token = checkAuthentication();
     const placeId = getPlaceIdFromURL();
+    const token = checkAuthentication();
 
     if (reviewForm) {
         reviewForm.addEventListener('submit', async (event) => {
