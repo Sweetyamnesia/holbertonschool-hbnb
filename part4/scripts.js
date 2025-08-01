@@ -135,7 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
   	}
 
 	function displayPlaceDetails(place) {
-      // Clear the current content of the place details section
+        document.getElementById('placeDetails').innerHTML = '';   
       // Create elements to display the place details (name, description, price, amenities and reviews)
       // Append the created elements to the place details section
   	}
@@ -149,9 +149,10 @@ document.addEventListener('DOMContentLoaded', () => {
   	}
 
 	function getPlaceIdFromURL() {
-      // Extract the place ID from window.location.search
-      // Your code here
-  	}
+        const urlParams = new URLSearchParams(window.location.search);
+        const placeId = urlParams.get('place_id');
+        return placeId;
+    }
 
 	document.addEventListener('DOMContentLoaded', () => {
     const reviewForm = document.getElementById('review-form');
