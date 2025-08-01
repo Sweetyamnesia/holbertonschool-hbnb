@@ -105,11 +105,6 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
   	});
 
-	function getPlaceIdFromURL() {
-      // Extract the place ID from window.location.search
-      // Your code here
-  	}
-
 	function checkAuthentication() {
       const token = getCookie('token');
       const addReviewSection = document.getElementById('add-review');
@@ -121,11 +116,6 @@ document.addEventListener('DOMContentLoaded', () => {
           // Store the token for later use
           fetchPlaceDetails(token, placeId);
       }
-  	}
-
-  	function getCookie(name) {
-      // Function to get a cookie value by its name
-      // Your code here
   	}
 
 	async function fetchPlaceDetails(token, placeId) {
@@ -146,11 +136,6 @@ document.addEventListener('DOMContentLoaded', () => {
           window.location.href = 'index.html';
       }
       return token;
-  	}
-
-  	function getCookie(name) {
-      // Function to get a cookie value by its name
-      // Your code here
   	}
 
 	function getPlaceIdFromURL() {
