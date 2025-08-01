@@ -30,6 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
       	const data = await response.json();
       	document.cookie = `token=${data.access_token}; path=/; max-age=3600; Secure; SameSite=Strict`;
       	window.location.href = 'index.html';
+        return;
   		} else {
 			try {
             	const errorData = await response.json();
@@ -140,7 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	function displayPlaceDetails(place) {
         const container = document.getElementById('placeDetails');
-        document.getElementById('placeDetails').innerHTML = '';
+        container.innerHTML = '';
 
         if (!place) {
         container.textContent = 'Aucun détail disponible.';
