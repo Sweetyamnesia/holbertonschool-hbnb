@@ -42,27 +42,29 @@ document.addEventListener('DOMContentLoaded', () => {
   	}
 
 	function checkAuthentication() {
-      const token = getCookie('token');
-      const loginLink = document.getElementById('login-link');
+    const token = getCookie('token');
+    const currentPage = window.location.pathname;
 
-      if (!token) {
-          window.location.href = 'index.html';
-          loginLink.style.display = 'block';
-      	} else {
-          loginLink.style.display = 'none';
-          fetchPlaces(token);
-      	}
+    if (!token) {
+        window.location.href = 'index.html';
+        return;
+    }
 
+    // Si on est sur index.html
+    if (currentPage.includes('index.html') || currentPage.endsWith('/')) {
+        const loginLink = document.getElementById('login-link');
+        if (loginLink) loginLink.style.display = 'none';
+        fetchPlaces(token);
+    }
+
+    // Si on est sur place.html
+    if (currentPage.includes('place.html')) {
         const addReviewSection = document.getElementById('add-review');
+        if (addReviewSection) addReviewSection.style.display = 'block';
+        fetchPlaceDetails(token, placeId);
+    }
+    }
 
-        if (!token) {
-          addReviewSection.style.display = 'none';
-        } else {
-          addReviewSection.style.display = 'block';
-          // Store the token for later use
-          fetchPlaceDetails(token, placeId);
-        }
-  	    }
 
 	function getCookie(name) {
     const cookies = document.cookie.split(";");
