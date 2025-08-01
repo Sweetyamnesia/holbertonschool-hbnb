@@ -135,7 +135,8 @@ document.addEventListener('DOMContentLoaded', () => {
   	}
 
 	function displayPlaceDetails(place) {
-        document.getElementById('placeDetails').innerHTML = '';   
+        document.getElementById('placeDetails').innerHTML = '';  
+
       // Create elements to display the place details (name, description, price, amenities and reviews)
       // Append the created elements to the place details section
   	}
@@ -170,11 +171,17 @@ document.addEventListener('DOMContentLoaded', () => {
   	});
 
 	async function submitReview(token, placeId, reviewText) {
-      // Make a POST request to submit review data
-      // Include the token in the Authorization header
-      // Send placeId and reviewText in the request body
-      // Handle the response
-  	}
+    const response = await fetch(`http://localhost:5000/api/v1/places/${placeId}/reviews`, {
+        method: 'POST',
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ comment: reviewText })
+    });
+        handleResponse(response);
+    }
+
 
 	function handleResponse(response) {
     if (response.ok) {
