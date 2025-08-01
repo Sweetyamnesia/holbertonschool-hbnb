@@ -186,7 +186,8 @@ document.addEventListener('DOMContentLoaded', () => {
 	function handleResponse(response) {
     if (response.ok) {
         alert('Review submitted successfully!');
-        // Clear the form
+        const reviewInput = document.getElementById('review-text');
+        if (reviewInput) reviewInput.value = '';
     } else {
         alert('Failed to submit review');
       }
