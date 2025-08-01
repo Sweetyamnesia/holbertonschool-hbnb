@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
       	}
   	}
 
-	function getCookieByName(name) {
+	function getCookie(name) {
     const cookies = document.cookie.split(";");
         for (let cookie of cookies) {
             cookie = cookie.trim();
@@ -131,7 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 
         const data = await response.json();
-		displayPlaces(data);
+		displayPlacesDetails(data);
   	}
 
 	function displayPlaceDetails(place) {
