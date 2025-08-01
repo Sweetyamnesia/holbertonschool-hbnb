@@ -108,11 +108,11 @@ document.addEventListener('DOMContentLoaded', () => {
   	}
 
 	document.getElementById('price-filter').addEventListener('change', (event) => {
-      const placePrice = parseFloat(places.dataset.price);
+      const placePrice = parseFloat(place.dataset.price);
         if (isNaN(selectedPrice) || placePrice <= selectedPrice) {
-            places.style.display = 'block';
+            place.style.display = 'block';
         } else {
-            places.style.display = 'none';
+            place.style.display = 'none';
 		}
   	});
 
