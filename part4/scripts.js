@@ -108,13 +108,19 @@ document.addEventListener('DOMContentLoaded', () => {
   	}
 
 	document.getElementById('price-filter').addEventListener('change', (event) => {
-      const placePrice = parseFloat(place.dataset.price);
-        if (isNaN(selectedPrice) || placePrice <= selectedPrice) {
-            place.style.display = 'block';
-        } else {
-            place.style.display = 'none';
-		}
-  	});
+    const selectedPrice = parseFloat(event.target.value);
+    const placeElements = document.querySelectorAll('.place');
+
+    placeElements.forEach(place => {
+        const placePrice = parseFloat(place.dataset.price);
+            if (isNaN(selectedPrice) || placePrice <= selectedPrice) {
+                place.style.display = 'block';
+            } else {
+                place.style.display = 'none';
+            }
+        });
+    });
+
 
 	async function fetchPlaceDetails(token, placeId) {
         const response = await fetch(`http://localhost:5000/api/v1/places/${placeId}`, {
@@ -129,14 +135,56 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 
         const data = await response.json();
-		displayPlacesDetails(data);
+		displayPlaceDetails(data);
   	}
 
 	function displayPlaceDetails(place) {
-        document.getElementById('placeDetails').innerHTML = '';  
+        const container = document.getElementById('placeDetails');
+        document.getElementById('placeDetails').innerHTML = '';
 
-      // Create elements to display the place details (name, description, price, amenities and reviews)
-      // Append the created elements to the place details section
+        if (!place) {
+        container.textContent = 'Aucun détail disponible.';
+        return;
+        }
+
+        const name = document.createElement('h2');
+        name.textContent = place.name;
+
+        const description = document.createElement('p');
+        description.textContent = place.description;
+
+        const price = document.createElement('p');
+        price.textContent = `Prix: ${place.price} €`;
+
+        const amenities = document.createElement('ul');
+        if (place.amenities && place.amenities.length > 0) {
+            place.amenities.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = item;
+                amenities.appendChild(li);
+            });
+        } else {
+            amenities.textContent = 'Aucun équipement disponible.';
+        }
+
+        const reviews = document.createElement('div');
+        if (place.reviews && place.reviews.length > 0) {
+            place.reviews.forEach(review => {
+                const p = document.createElement('p');
+                p.textContent = `"${review.comment}" — ${review.user}`;
+                reviews.appendChild(p);
+            });
+        } else {
+            reviews.textContent = 'Aucun avis pour le moment.';
+        }
+
+        container.appendChild(name);
+        container.appendChild(description);
+        container.appendChild(price);
+        container.appendChild(document.createElement('hr'));
+        container.appendChild(amenities);
+        container.appendChild(document.createElement('hr'));
+        container.appendChild(reviews);
   	}
 
 	function getPlaceIdFromURL() {
