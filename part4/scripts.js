@@ -200,9 +200,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (reviewForm) {
         reviewForm.addEventListener('submit', async (event) => {
             event.preventDefault();
-            // Get review text from form
-            // Make AJAX request to submit review
-            // Handle the response
+            const reviewText = document.getElementById('review-text').value;
+            await submitReview(token, placeId, reviewText);
         });
     }
 
