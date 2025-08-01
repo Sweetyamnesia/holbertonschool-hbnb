@@ -119,9 +119,16 @@ document.addEventListener('DOMContentLoaded', () => {
   	}
 
 	async function fetchPlaceDetails(token, placeId) {
-      // Make a GET request to fetch place details
-      // Include the token in the Authorization header
-      // Handle the response and pass the data to displayPlaceDetails function
+        const response = await fetch('http://localhost:5000/api/v1/places/${placeId}', {
+			method: 'GET',
+			headers: {
+				'Authorization': `Bearer ${token}`
+			}
+		});
+
+        if (!response.ok) {
+			throw new Error('Erreur lors du chargement des détails');
+		}
   	}
 
 	function displayPlaceDetails(place) {
