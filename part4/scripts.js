@@ -155,7 +155,6 @@ document.addEventListener('DOMContentLoaded', () => {
         return placeId;
     }
 
-	document.addEventListener('DOMContentLoaded', () => {
     const reviewForm = document.getElementById('review-form');
     const token = checkAuthentication();
     const placeId = getPlaceIdFromURL();
@@ -168,7 +167,6 @@ document.addEventListener('DOMContentLoaded', () => {
             // Handle the response
         });
     }
-  	});
 
 	async function submitReview(token, placeId, reviewText) {
     const response = await fetch(`http://localhost:5000/api/v1/places/${placeId}/reviews`, {
