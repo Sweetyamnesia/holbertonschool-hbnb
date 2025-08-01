@@ -129,6 +129,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!response.ok) {
 			throw new Error('Erreur lors du chargement des détails');
 		}
+
+        const data = await response.json();
+		displayPlaces(data);
   	}
 
 	function displayPlaceDetails(place) {
